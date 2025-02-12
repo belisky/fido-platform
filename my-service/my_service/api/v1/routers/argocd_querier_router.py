@@ -7,8 +7,8 @@ import requests
 
 
 router = APIRouter(
-    prefix="/arogocd",
-    tags=["arogocd"],
+    prefix="/argocd",
+    tags=["argocd"],
 )
 
 
