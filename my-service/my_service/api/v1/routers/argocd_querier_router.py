@@ -17,7 +17,7 @@ logger = setup_logger()
 
 app = FastAPI()
 ARGOCD_API_URL = "https://localhost:8085/api/v1/applications"
- 
+ARGOCD_PROJECTS_URL = "https://localhost:8085/api/v1/projects"
 
 def get_argocd_applications(token):     
     ARGOCD_AUTH_TOKEN = token
@@ -37,11 +37,28 @@ def get_argocd_applications(token):
     except Exception as e:
         return {"error": str(e)}
     
+def get_argocd_projects(token):
+    ARGOCD_AUTH_TOKEN = token
+    try:
+        headers = {"Authorization": f"Bearer {ARGOCD_AUTH_TOKEN}"}
+        response = requests.get(ARGOCD_PROJECTS_URL, headers=headers, verify=False)
+        response.raise_for_status()
+        projects = response.json()
+        project_list = [
+            {
+                "project_name": project["metadata"]["name"],
+                "namespace": project["metadata"].get("namespace", "argocd")
+            }
+            for project in projects.get("items", [])
+        ]
+        return {"projects": project_list}
+    except Exception as e:
+        return {"error": str(e)}
+
 
 @router.get("/application_status")
-async def application_status(token: str = Depends(get_token)):   
-    get_argocd_applications(token)  
-     
+async def application_status(token: str = Depends(get_token)):          
+     return get_argocd_applications(token)
 
     # """Fetches all ArgoCD applications statuses
 
@@ -60,7 +77,7 @@ async def application_status(token: str = Depends(get_token)):
 
 @router.get("/list_projects")
 async def list_projects(token: str = Depends(get_token)):
-   
+    return get_argocd_projects(token)
      
     """Fetches all argocd projects names and namespaces to which they are configured
 
@@ -75,4 +92,4 @@ async def list_projects(token: str = Depends(get_token)):
     # Make sure to use argocd token for authentication                       #  
     ##########################################################################
 
-    pass
+    # pass
