@@ -1,0 +1,21 @@
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: fido-exam
+servers: 1
+agents: 3
+registries:
+  create: 
+    name: my-registry
+  config: |
+    mirrors:
+      "my-registry.local":
+        endpoint:
+          - http://my-registry.local:5000
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+  - port: 443:443
+    nodeFilters:
+      - loadbalancer

@@ -1,0 +1,4 @@
+mirrors:
+  my-registry:
+    endpoint:
+      - http://my-registry/v2
