@@ -16,8 +16,8 @@ logger = setup_logger()
 
 
 app = FastAPI()
-ARGOCD_API_URL = "https://localhost:8085/api/v1/applications"
-ARGOCD_PROJECTS_URL = "https://localhost:8085/api/v1/projects"
+ARGOCD_API_URL = "https://argocd-server.argocd.svc.cluster.local/api/v1/applications"
+ARGOCD_PROJECTS_URL = "https://argocd-server.argocd.svc.cluster.local/api/v1/projects"
 
 def get_argocd_applications(token):     
     ARGOCD_AUTH_TOKEN = token
