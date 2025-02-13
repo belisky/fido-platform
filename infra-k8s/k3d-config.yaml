@@ -16,6 +16,9 @@ ports:
   - port: 8091:80
     nodeFilters:
       - loadbalancer
+  - port: 8090:8000
+    nodeFilters:
+      - loadbalancer
   - port: 443:443
     nodeFilters:
       - loadbalancer
