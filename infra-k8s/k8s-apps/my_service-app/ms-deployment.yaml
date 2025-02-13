@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ms
-        image: my-registry.local:5000/my-service:latest
+        image: localhost:5000/my-service:latest
         ports:
         - containerPort: 8000
         envFrom:
