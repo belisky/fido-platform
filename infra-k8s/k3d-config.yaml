@@ -13,7 +13,7 @@ registries:
         endpoint:
           - http://my-registry.local:5000
 ports:
-  - port: 8080:80
+  - port: 8091:80
     nodeFilters:
       - loadbalancer
   - port: 443:443
