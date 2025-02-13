@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-registry
+  labels:
+    app: ms-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-registry
+  template:
+    metadata:
+      labels:
+        app: ms-registry
+    spec:
+      containers:
+      - name: ms-registry
+        image: my-registry.local:44003/my-service:latest
+        ports:
+        - containerPort: 8000
