@@ -29,4 +29,4 @@ EXPOSE 8000
 ENTRYPOINT ["poetry", "run"]
 
 # Default CMD arguments (can be overridden)
-CMD ["sh", "-c", "cd my_service && uvicorn main:app"]
+CMD ["sh", "-c", "cd my_service && uvicorn main:app --reload --host 0.0.0.0"]
