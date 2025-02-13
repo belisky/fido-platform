@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: ms
-        image: my-registry.local:44003/my-service:latest
+        image: my-service:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8000
         envFrom:
