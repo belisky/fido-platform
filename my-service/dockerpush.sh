@@ -4,7 +4,7 @@
 IMAGE_NAME=${1:-"my-service"}      
 TAG_VERSION=${2:-"latest"}    
 REGISTRY_HOST=${3:-"my-registry.local"}  
-REGISTRY_PORT=${4:-"33733"}     
+REGISTRY_PORT=${4:-"40105"}     
 
 # Build the Docker image
 echo "Building Docker image: $IMAGE_NAME:$TAG_VERSION"
@@ -27,4 +27,4 @@ fi
 
 docker run -p 8092:8000 --name ms --env-file .env $IMAGE_NAME:$TAG_VERSION 
 docker exec ms env
-echo "Docker container can be accessed at localhost:8090 successfully!"
+echo "Docker container can be accessed at localhost:8092 successfully!"
