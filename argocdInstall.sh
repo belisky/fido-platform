@@ -7,3 +7,4 @@ argocd admin initial-password -n argocd
 argocd cluster add k3d-fido-exam
 kubectl apply -f "/home/nobel/Downloads/platfrom-engineer-test-new (1)/platform-engineer-test/manifests/nginx-app.yaml"
 kubectl port-forward svc/nginx 8087:80
+kubectl create configmap ms-env --from-env-file=.env --dry-run=client -o yaml > configmap.yaml
