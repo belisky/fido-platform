@@ -40,7 +40,7 @@ spec:
         checksum/stream-server-block-configuration: {{ include (print $.Template.BasePath "/stream-server-block-configmap.yaml") . | sha256sum }}
         {{- end }}
     spec:
-      {{- include "nginx.imagePullSecrets" . | nindent 6 }}
+      # {{- include "nginx.imagePullSecrets" . | nindent 6 }}
       shareProcessNamespace: {{ .Values.sidecarSingleProcessNamespace }}
       serviceAccountName: {{ template "nginx.serviceAccountName" . }}
       automountServiceAccountToken: {{ .Values.automountServiceAccountToken }}
