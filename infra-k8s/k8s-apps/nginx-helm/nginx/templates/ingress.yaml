@@ -16,6 +16,7 @@ spec:
             backend:
               service:
                 name: {{ .Values.common.name }}
+                namespace: default
                 port:
                   number: {{ .Values.common.ports.http }}
 

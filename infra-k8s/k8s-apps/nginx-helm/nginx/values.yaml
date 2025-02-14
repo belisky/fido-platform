@@ -1,6 +1,6 @@
 common:
   name: nginx-helm
-  namespace: nginx-helm
+  namespace: default
   labels:
     app: nginx-helm
   ports:
