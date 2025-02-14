@@ -1,30 +1,26 @@
 apiVersion: {{ .Values.deployment.apiVersion }}
 kind: Deployment
 metadata:
-  name: {{ .Values.deployment.name }}
-  namespace: {{ .Values.deployment.namespace | quote }}
+  name: {{ .Values.common.name }}
+  namespace: {{ .Values.common.namespace | quote }}
   labels: 
-    {{- toYaml .Values.deployment.labels | nindent 4 }}  
+    {{- toYaml .Values.common.labels | nindent 4 }}  
   selector:
     matchLabels: 
-      {{- toYaml .Values.deployment.matchLabels | nindent 6 }}
+      {{- toYaml .Values.common.selector | nindent 6 }}
   template:
     metadata:
       labels: 
         {{- toYaml .Values.podLabels | nindent 8 }}       
     spec:         
       containers:
-        - name: {{ .Values.container.name }}
+        - name: {{ .Values.common.name }}
           image: "{{ .Values.container.image.repository }}:{{ .Values.container.image.tag }}"
           ports:
-            {{- if .Values.container.ports.http }}
             - name: http
-              containerPort: {{ .Values.container.ports.http }}
-            {{- end }}
-            {{- if .Values.container.ports.https }}
+              containerPort: {{ .Values.common.ports.http }}
             - name: https
-              containerPort: {{ .Values.container.ports.https }}
-            {{- end }}
+              containerPort: {{ .Values.common.ports.https }}
             {{- if .Values.container.extraPorts }}
             {{- toYaml .Values.container.extraPorts | nindent 12 }}
             {{- end }}

@@ -1,14 +1,13 @@
 apiVersion: {{ .Values.ingress.apiVersion }}
 kind: Ingress
 metadata:
-  name: {{ .Values.ingress.name }}
-  namespace: {{ .Values.ingress.namespace | quote }}
-  labels: 
-    {{- toYaml .Values.ingress.labels | nindent 4 }}
+  name: {{ .Values.common.name }}
+  namespace: {{ .Values.common.namespace | quote }}
+  labels:
+    {{- toYaml .Values.common.labels | nindent 4 }}
 
 spec:
   rules:
-    {{- if .Values.ingress.hostname }}
     - host: {{ .Values.ingress.hostname | quote }}
       http:
         paths:
@@ -16,10 +15,9 @@ spec:
             pathType: {{ .Values.ingress.pathType }}
             backend:
               service:
-                name: {{ .Values.ingress.serviceName }}
+                name: {{ .Values.common.name }}
                 port:
-                  number: {{ .Values.ingress.servicePort }}
-    {{- end }}
+                  number: {{ .Values.common.ports.http }}
 
   {{- if .Values.ingress.tls }}
   tls:

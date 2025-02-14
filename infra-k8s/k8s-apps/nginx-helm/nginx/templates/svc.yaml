@@ -1,29 +1,22 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name }}
-  namespace: {{ .Values.service.namespace | quote }}
+  name: {{ .Values.common.name }}
+  namespace: {{ .Values.common.namespace | quote }}
   labels: 
-    {{- toYaml .Values.service.labels | nindent 4 }}
+    {{- toYaml .Values.common.labels | nindent 4 }}
 
 spec:
   type: {{ .Values.service.type }}
 
   ports:
-    {{- if .Values.service.ports.http }}
     - name: http
-      port: {{ .Values.service.ports.http }}
-      targetPort: {{ .Values.service.targetPort.http }}
-  
-    {{- end }}
+      port: {{ .Values.common.ports.http }}
+      targetPort: {{ .Values.common.ports.http }}
 
-    {{- if .Values.service.ports.https }}
     - name: https
-      port: {{ .Values.service.ports.https }}
-      targetPort: {{ .Values.service.targetPort.https }}
-   
-    {{- end }}
- 
+      port: {{ .Values.common.ports.https }}
+      targetPort: {{ .Values.common.ports.https }}
 
-  selector: 
-    {{- toYaml .Values.service.selector | nindent 4 }}
+  selector:
+    {{- toYaml .Values.common.selector | nindent 4 }}

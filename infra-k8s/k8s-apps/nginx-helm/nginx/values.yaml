@@ -11,33 +11,23 @@ common:
 
 deployment:
   apiVersion: apps/v1
-  name: "{{ .Values.common.name }}-helm"
-  namespace: "{{ .Values.common.namespace }}"
-  labels: "{{ .Values.common.labels }}"
-  matchLabels: "{{ .Values.common.selector }}"
+  matchLabels:
+    app: nginx-helm
 
 podLabels:
-  app: "{{ .Values.common.name }}-helm"
   tier: frontend
 
 container:
-  name: "{{ .Values.common.name }}-helm"
   image:
     repository: nginx
     tag: latest
-  ports: "{{ .Values.common.ports }}"
- 
 
 service:
-  name: "{{ .Values.common.name }}-helm"
-  namespace: "{{ .Values.common.namespace }}"
-  labels: "{{ .Values.common.labels }}"
   type: ClusterIP  # Change to NodePort or LoadBalancer if needed
-  ports: "{{ .Values.common.ports }}"
-  targetPort: "{{ .Values.common.ports }}"
- 
+  ports:
+    http: 8080
+  targetPort: 8080
   extraPorts: []
-  selector: "{{ .Values.common.selector }}"
 
 metrics:
   enabled: false
@@ -46,12 +36,8 @@ metrics:
 
 ingress:
   apiVersion: networking.k8s.io/v1
-  name: "{{ .Values.common.name }}-helm"
-  namespace: "{{ .Values.common.namespace }}"
-  labels: "{{ .Values.common.labels }}"
   hostname: my-nginx.local
   path: /
   pathType: Prefix
-  serviceName: "{{ .Values.common.name }}-helm"
-  servicePort: 80
+  servicePort: 8080
   tls: []  # Configure if TLS is needed
