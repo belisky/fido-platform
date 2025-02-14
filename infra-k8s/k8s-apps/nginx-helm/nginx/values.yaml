@@ -4,7 +4,7 @@ common:
   labels:
     app: nginx-helm
   ports:
-    http: 8080
+    http: 8082
     https: 8443
   selector:
     app: nginx-helm
@@ -26,8 +26,8 @@ container:
 service:
   type: ClusterIP  # Change to NodePort or LoadBalancer if needed
   ports:
-    http: 8080
-  targetPort: 8080
+    http: 8082
+  targetPort: 80
   extraPorts: []
 
 metrics:
@@ -37,8 +37,8 @@ metrics:
 
 ingress:
   apiVersion: networking.k8s.io/v1
-  hostname: my-nginx.local
+  hostname: nginx-helm.local
   path: /
   pathType: Prefix
-  servicePort: 8080
+  servicePort: 8082
   tls: []  # Configure if TLS is needed

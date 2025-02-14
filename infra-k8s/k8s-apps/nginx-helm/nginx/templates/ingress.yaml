@@ -4,7 +4,6 @@ metadata:
   name: "{{ .Values.common.name }}-ingress"
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
- 
 
 spec:
   rules:

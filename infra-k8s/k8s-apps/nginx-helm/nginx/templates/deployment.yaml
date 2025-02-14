@@ -23,5 +23,5 @@ spec:
             - name: http
               containerPort: {{ .Values.common.ports.http }}
             - name: https
-              containerPort: {{ .Values.common.ports.https }}
+              containerPort: 80
          
