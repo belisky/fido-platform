@@ -5,8 +5,7 @@ metadata:
   name: {{ .Values.common.name }}
   namespace: {{ .Values.common.namespace | quote }}
   labels: 
-    app: nginx-helm
-     
+    app: nginx-helm     
 spec:
   replicas: 1
   selector:

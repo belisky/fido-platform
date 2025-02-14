@@ -16,6 +16,7 @@ deployment:
 
 podLabels:
   tier: frontend
+  app: nginx-helm
 
 container:
   image:

@@ -1,10 +1,10 @@
 apiVersion:  networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.common.name }}
-  namespace: {{ .Values.common.namespace | quote }}
-  labels:
-    {{- toYaml .Values.common.labels | nindent 4 }}
+  name: "{{ .Values.common.name }}-ingress"
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+ 
 
 spec:
   rules:
@@ -20,7 +20,4 @@ spec:
                 port:
                   number: {{ .Values.common.ports.http }}
 
-  {{- if .Values.ingress.tls }}
-  tls:
-    {{- toYaml .Values.ingress.tls | nindent 4 }}
-  {{- end }}
+ 
