@@ -1,10 +1,13 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.common.name }}
   namespace: {{ .Values.common.namespace | quote }}
   labels: 
-    {{- toYaml .Values.common.labels | nindent 4 }}  
+    {{- toYaml .Values.common.labels | nindent 4 }} 
+spec:
+  replicas: 1
   selector:
     matchLabels: 
       {{- toYaml .Values.common.selector | nindent 6 }}
@@ -21,6 +24,4 @@ metadata:
               containerPort: {{ .Values.common.ports.http }}
             - name: https
               containerPort: {{ .Values.common.ports.https }}
-            {{- if .Values.container.extraPorts }}
-            {{- toYaml .Values.container.extraPorts | nindent 12 }}
-            {{- end }}
+         
