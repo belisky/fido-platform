@@ -37,7 +37,7 @@ metrics:
 
 ingress:
   apiVersion: networking.k8s.io/v1
-  hostname: ms-service-helm.local
+  hostname: my-service-helm.local
   path: /
   pathType: Prefix
   servicePort: 8083
