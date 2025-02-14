@@ -5,7 +5,8 @@ metadata:
   name: {{ .Values.common.name }}
   namespace: {{ .Values.common.namespace | quote }}
   labels: 
-    {{- toYaml .Values.common.labels | nindent 4 }} 
+    app: nginx-helm
+     
 spec:
   replicas: 1
   selector:
