@@ -229,4 +229,18 @@ docker push my-registry.local:<LOCAL_REGISTRY_PORT>/<YOUR_TAG_VERASION>
 
 ---
 
+
  **GOOD LUCK!** 🚀
+
+
+---
+### **Proof of work**
+![Screenshot from 2025-02-14 17-18-25](https://github.com/user-attachments/assets/b5ef2877-2c2e-49b1-941a-4f1ca41d7fa2)
+---
+![Screenshot from 2025-02-14 17-18-38](https://github.com/user-attachments/assets/3bcb4469-c5b5-49df-bb42-c1ccec739849)
+---
+![Screenshot from 2025-02-14 17-18-59](https://github.com/user-attachments/assets/08887a93-1481-4f29-b96a-32644ecbfaaa)
+
+
+
+
