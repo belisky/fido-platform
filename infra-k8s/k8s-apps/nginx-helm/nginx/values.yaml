@@ -1,5 +1,5 @@
 common:
-  name: nginx
+  name: nginx-helm
   namespace: default
   labels:
     app: nginx-helm
