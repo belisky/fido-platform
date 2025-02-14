@@ -9,6 +9,9 @@ spec:
     repoURL: "https://github.com/belisky/fido-platform.git"
     targetRevision: HEAD
     path: infra-k8s/k8s-apps/nginx-helm/nginx
+    helm:
+      valueFiles:
+      - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
