@@ -20,7 +20,7 @@ podLabels:
 
 container:
   image:
-    repository: nginx
+    repository: my-service
     tag: latest
 
 service:
