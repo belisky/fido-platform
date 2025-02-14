@@ -940,10 +940,10 @@ healthIngress:
 
 ## Prometheus Exporter / Metrics
 ##
-# metrics:
+metrics:
   ## @param metrics.enabled Start a Prometheus exporter sidecar container
   ##
-  # enabled: false
+  enabled: false
   ## Bitnami NGINX Prometheus Exporter image
   ## ref: https://hub.docker.com/r/bitnami/nginx-exporter/tags/
   ## @param metrics.image.registry [default: REGISTRY_NAME] NGINX Prometheus exporter image registry
