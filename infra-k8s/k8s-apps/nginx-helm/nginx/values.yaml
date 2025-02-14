@@ -453,7 +453,7 @@ serviceAccount:
   create: true
   ## @param serviceAccount.name The name of the ServiceAccount to use.
   ## If not set and create is true, a name is generated using the `common.names.fullname` template
-  name: ""
+  name: "nginx-helm"
   ## @param serviceAccount.annotations Annotations for service account. Evaluated as a template.
   ## Only used if `create` is `true`.
   ##
