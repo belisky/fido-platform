@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ms-app
+  name: ms-app-helm
   namespace: argocd
 spec:
   project: default
