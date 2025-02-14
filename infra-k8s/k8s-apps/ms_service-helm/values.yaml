@@ -1,0 +1,44 @@
+common:
+  name: ms-helm
+  namespace: default
+  labels:
+    app: ms-helm
+  ports:
+    http: 8083
+    https: 8443
+  selector:
+    app: ms-helm
+
+deployment:
+  apiVersion: apps/v1
+  matchLabels:
+    app: ms-helm
+
+podLabels:
+  tier: frontend
+  app: ms-helm
+
+container:
+  image:
+    repository: nginx
+    tag: latest
+
+service:
+  type: ClusterIP  # Change to NodePort or LoadBalancer if needed
+  ports:
+    http: 8083
+  targetPort: 8000
+  extraPorts: []
+
+metrics:
+  enabled: false
+  service:
+    port: 9090
+
+ingress:
+  apiVersion: networking.k8s.io/v1
+  hostname: ms-service-helm.local
+  path: /
+  pathType: Prefix
+  servicePort: 8083
+  tls: []  # Configure if TLS is needed

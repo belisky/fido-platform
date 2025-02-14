@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.common.name }}
+  namespace: {{ .Values.common.namespace | quote }}
+  labels: 
+    {{- toYaml .Values.common.labels | nindent 4 }}     
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      {{- toYaml .Values.deployment.matchLabels | nindent 6 }}
+  template:
+    metadata:
+      labels: 
+        {{- toYaml .Values.podLabels | nindent 8 }}       
+    spec:         
+      containers:
+        - name: {{ .Values.common.name }}
+          image: "{{ .Values.container.image.repository }}:{{ .Values.container.image.tag }}"
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: {{ .Values.common.ports.http }}
+          envFrom:
+            - configMapRef:
+                name: ms-env
