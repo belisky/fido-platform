@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: ms
-        image: my-service:latest
-        imagePullPolicy: Never
+        image: k3d-my-registry:5000/my-service:latest
+        # imagePullPolicy: Never
         ports:
         - containerPort: 8000
         envFrom:
