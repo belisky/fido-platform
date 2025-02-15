@@ -1,4 +1,11 @@
 #!/bin/bash
+
+##########################################################################
+## Prerequisites                                                         #
+# Make sure to have k3d,helm,argocd already installed on your system!!!  #
+#                                                                        #
+##########################################################################
+
 k3d registry create my-registry --port 5000
 k3d cluster create -c "infra-k8s/k3d-config.yaml"
 cd "my-service"
