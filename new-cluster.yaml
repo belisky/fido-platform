@@ -1,0 +1,12 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: nc  # Cluster name
+servers: 1  # Number of server nodes
+agents: 2   # Number of agent nodes
+ports:
+  - port: 6550:6443  # Map API server to 0.0.0.0:6550
+registries:
+  create:
+    name: myregistry.localhost  # Registry name
+    port: "12345"  # Registry exposed port
