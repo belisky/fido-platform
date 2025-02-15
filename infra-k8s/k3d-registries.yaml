@@ -1,4 +1,4 @@
 mirrors:
-  "my-registry.local:5000":
+  "my-registry.local":
     endpoint:
       - http://my-registry.local:5000

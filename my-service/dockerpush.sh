@@ -8,8 +8,8 @@ echo "The port number of my-registry is: $PORT"
 # Set variables
 IMAGE_NAME=${1:-"my-service"}      
 TAG_VERSION=${2:-"latest"}    
-REGISTRY_HOST=${3:-"my-registry.local"}  
-REGISTRY_PORT=$PORT   
+REGISTRY_HOST=${3:-"my-registry"}  
+REGISTRY_PORT=$PORT
 
 # Build the Docker image
 echo "Building Docker image: $IMAGE_NAME:$TAG_VERSION"
@@ -31,12 +31,12 @@ else
 fi
 
 # Imports docker image into cluster
-k3d image import my-service:latest --cluster fido-exam
-if k3d image import my-service:latest --cluster fido-exam; then
-    echo "image imported Successfully!!!"
-else
-    echo "import failed"
-fi
+# k3d image import my-service:latest --cluster fido-exam
+# if k3d image import my-service:latest --cluster fido-exam; then
+#     echo "image imported Successfully!!!"
+# else
+#     echo "import failed"
+# fi
 
 # creates configmap for container
 kubectl create configmap ms-env --from-env-file=.env
