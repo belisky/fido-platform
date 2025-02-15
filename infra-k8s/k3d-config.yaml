@@ -5,8 +5,12 @@ metadata:
 servers: 1
 agents: 3
 registries:
-  create: 
-    name: my-registry
+  # create: 
+  #   name: my-registry
+  # host: "0.0.0.0"
+  # port: "12345"
+  use:
+    - k3d-my-registry:5000
   config: |
     mirrors:
       "my-registry.local":
