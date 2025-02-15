@@ -19,7 +19,7 @@ spec:
       containers:
         - name: {{ .Values.common.name }}
           image: "{{ .Values.container.image.repository }}:{{ .Values.container.image.tag }}"
-          imagePullPolicy: Never
+          # imagePullPolicy: Never
           ports:
             - name: http
               containerPort: {{ .Values.common.ports.http }}
