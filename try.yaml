@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
       - name: ms-registry
-        image: my-service:latest
-        imagePullPolicy: Never
+        image: k3d-my-registry:5000/my-service:latest
+        # imagePullPolicy: Never
         ports:
         - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: ms-env
