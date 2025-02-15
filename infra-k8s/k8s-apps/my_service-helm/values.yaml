@@ -20,7 +20,7 @@ podLabels:
 
 container:
   image:
-    repository: my-service
+    repository: k3d-my-registry:5000/my-service
     tag: latest
 
 service:
